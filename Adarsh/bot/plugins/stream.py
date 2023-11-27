@@ -122,11 +122,18 @@ async def channel_receive_handler(bot, broadcast):
     try:
         log_msg = await broadcast.forward(chat_id=Var.BIN_CHANNEL)
         online_link = f"{Var.URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-        await bot.send_message(
-            chat_id=broadcast.chat.id,
-            text=online_link,
-            reply_to_message_id=broadcast.message_id
-        )
+        try:
+    await bot.send_message(
+        chat_id=broadcast.chat.id,
+        text=online_link,
+        reply_to_message_id=broadcast.message_id
+    )
+except AttributeError:
+    await bot.send_message(
+        chat_id=broadcast.chat.id,
+        text=online_link
+    )
+
     except FloodWait as w:
         print(f"Sleeping for {str(w.x)}s")
         await asyncio.sleep(w.x)
