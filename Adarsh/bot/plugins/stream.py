@@ -81,7 +81,7 @@ async def private_receive_handler(c: Client, m: Message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("J  ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
+                            InlineKeyboardButton("JOIN NOW", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                         ]
                     ]
                 ),
@@ -109,8 +109,8 @@ async def private_receive_handler(c: Client, m: Message):
             text=msg_text.format(get_name(log_msg), humanbytes(get_media_file_size(m)), online_link, stream_link),
             quote=True,
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("STREAM ", url=stream_link), #Stream Link
-                                                InlineKeyboardButton('DOWNLOAD ', url=online_link)]]) #Download Link
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("STREAM🖥️", url=stream_link), #Stream Link
+                                                InlineKeyboardButton('DOWNLOAD📥', url=online_link)]]) #Download Link
         )
     except FloodWait as e:
         print(f"Sleeping for {str(e.x)}s")
@@ -147,8 +147,8 @@ async def channel_receive_handler(bot, broadcast):
             message_id=broadcast.id,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("STREAM ", url=stream_link),
-                     InlineKeyboardButton('D', url=online_link)] 
+                    [InlineKeyboardButton("STREAM🖥️", url=stream_link),
+                     InlineKeyboardButton('DOWNLOAD📥', url=online_link)] 
                 ]
             )
         )
