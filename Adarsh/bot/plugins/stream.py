@@ -122,7 +122,8 @@ async def channel_receive_handler(bot, broadcast):
     try:
         log_msg = await broadcast.forward(chat_id=Var.BIN_CHANNEL)
         online_link = f"{Var.URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-        try:
+        
+    try:
     await bot.send_message(
         chat_id=broadcast.chat.id,
         text=online_link,
